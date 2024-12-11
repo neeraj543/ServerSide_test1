@@ -24,6 +24,7 @@ public class BookControllerGetOneBookTest extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$.authors").isEmpty());
     }
 
+
     @Test
     public void getOneBookNotFound() throws Exception {
         final MvcResult mvcResult =
