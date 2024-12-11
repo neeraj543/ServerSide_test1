@@ -1,8 +1,6 @@
 package be.thomasmore.bookserver.controllers;
 
-import be.thomasmore.bookserver.model.dto.BookDTO;
-import be.thomasmore.bookserver.model.dto.BookDetailedDTO;
-import be.thomasmore.bookserver.model.dto.LibraryDetailedDTO;
+import be.thomasmore.bookserver.model.dto.*;
 import be.thomasmore.bookserver.services.LibraryService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +19,20 @@ public class LibraryController {
     private LibraryService libraryService;
 
     @Operation(summary = "get 1 library from the database.",
-            description = "library with id is fetched from database - returns detailed inf ")
+            description = "library with id is fetched from database  ")
     @GetMapping("{id}")
     public LibraryDetailedDTO findOne(@PathVariable int id) {
         log.info(String.format("##### findOne library %d", id));
         return libraryService.findOne(id);
     }
 
+
+    @Operation(summary = "get a library member with paramters, numberOfDaysLate, numberOfBooks, payMembership.",
+            description = "Libary with id is fetched from database. ")
+    @GetMapping("")
+    public Iterable<LibraryDTO> findAll(@PathVariable(required = false) String titleKeyWord, int id, int numberOfDaysLate, int numberOfBooks, boolean payMembership) {
+        log.info(String.format("##### find number of books borrowed, number of days late and if the member payed their membership %d", id));
+        return LibraryService.findAll(titleKeyWord);
+    }
 
 }

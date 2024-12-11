@@ -24,7 +24,7 @@ public class LibraryService {
     private LibraryDetailedDTOConverter libraryDetailedDTOConverter;
 
 
-    public List<LibraryDTO> findAll(String titleKeyWord) {
+    public static List<LibraryDTO> findAll(String titleKeyWord) {
         final List<Library> libraries = titleKeyWord == null ?
                 libraryRepository.findAll() :
                 libraryRepository.findByTitleContainingIgnoreCase(titleKeyWord);

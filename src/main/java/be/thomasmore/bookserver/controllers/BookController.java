@@ -90,5 +90,4 @@ public class BookController {
         log.info(String.format("##### delete book %d", id));
         bookService.delete(id);
     }
-
 }

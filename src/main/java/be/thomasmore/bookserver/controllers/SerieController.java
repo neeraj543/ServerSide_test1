@@ -27,7 +27,6 @@ public class SerieController {
         return serieService.findAll();
     }
 
-
     @Operation(summary = "get 1 serie from the database.",
             description = "Serie with id is fetched from database. ")
     @GetMapping("{id}")
@@ -35,5 +34,4 @@ public class SerieController {
         log.info(String.format("##### findOne serie %d", id));
         return serieService.findOne(id);
     }
-
 }
