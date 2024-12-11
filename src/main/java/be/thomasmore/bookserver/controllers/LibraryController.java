@@ -1,9 +1,9 @@
 package be.thomasmore.bookserver.controllers;
 
-import be.thomasmore.bookserver.model.dto.AuthorDTO;
 import be.thomasmore.bookserver.model.dto.BookDTO;
 import be.thomasmore.bookserver.model.dto.BookDetailedDTO;
-import be.thomasmore.bookserver.services.BookService;
+import be.thomasmore.bookserver.model.dto.LibraryDetailedDTO;
+import be.thomasmore.bookserver.services.LibraryService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,13 @@ public class LibraryController {
     @Autowired
     private LibraryService libraryService;
 
-    @Operation(summary = "list of books in the database.",
-            description = "If Request Parameter <b>titleKeyWord</b> is given: " +
-                    "only books where the title contains this titleKeyWord (ignore-case). </br>" +
-                    "Otherwise all books are returned. </br>" +
-                    "</br>" +
-                    "The authors Collection contains only id and name. </br>" +
-                    "Use GET api/authors/{id}/authors  to fetch more info about the authors. ")
-    @GetMapping("")
-    public Iterable<BookDTO> findAll(@RequestParam(required = false) String titleKeyWord) {
-        log.info("##### findAll books - titleKeyWord=" + titleKeyWord);
-        return bookService.findAll(titleKeyWord);
+    @Operation(summary = "get 1 library from the database.",
+            description = "library with id is fetched from database - returns detailed inf ")
+    @GetMapping("{id}")
+    public LibraryDetailedDTO findOne(@PathVariable int id) {
+        log.info(String.format("##### findOne library %d", id));
+        return libraryService.findOne(id);
     }
+
+
+}

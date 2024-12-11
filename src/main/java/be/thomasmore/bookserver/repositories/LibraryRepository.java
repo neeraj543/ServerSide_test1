@@ -10,4 +10,6 @@ import java.util.List;
 public interface LibraryRepository  extends CrudRepository<Library, Integer> {
         @NonNull
         List<Library> findAll();
+        List<Library> findByTitleContainingIgnoreCase(String titleKeyWord);
+
 }
