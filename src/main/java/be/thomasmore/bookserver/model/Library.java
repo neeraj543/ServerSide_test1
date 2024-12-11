@@ -15,10 +15,9 @@ public class Library {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
-
-    String name;
-    String location;
-    String members;
-    double membershipFee;
-    double lateFeePerDay;
+    private String name;
+    private String location;
+    private String members;
+    private double membershipFee;
+    private double lateFeePerDay;
 }
