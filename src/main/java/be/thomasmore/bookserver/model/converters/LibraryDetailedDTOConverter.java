@@ -14,10 +14,7 @@ public class LibraryDetailedDTOConverter {
     @Autowired
     private ModelMapper modelMapper;
 
-    /**
-     * @param author the entity from the db
-     * @return AuthorDetailedDTO object to send to the client.
-     */
+
     public LibraryDetailedDTO convertToDto(Library library) {
         return modelMapper.map(library, LibraryDetailedDTO.class);
     }
